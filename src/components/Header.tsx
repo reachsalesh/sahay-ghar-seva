@@ -2,9 +2,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Globe, Menu, MapPin } from "lucide-react";
 
-const Header = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("हिंदी");
-  const [selectedCity, setSelectedCity] = useState("दिल्ली");
+interface HeaderProps {
+  selectedCity: string;
+  onCityChange: (city: string) => void;
+  selectedLanguage: string;
+  onLanguageChange: (language: string) => void;
+}
+
+const Header = ({ selectedCity, onCityChange, selectedLanguage, onLanguageChange }: HeaderProps) => {
   
   const languages = [
     { code: "hi", name: "हिंदी", english: "Hindi" },
@@ -49,7 +54,7 @@ const Header = () => {
             <MapPin className="h-4 w-4 text-secondary" />
             <select 
               value={selectedCity}
-              onChange={(e) => setSelectedCity(e.target.value)}
+              onChange={(e) => onCityChange(e.target.value)}
               className="bg-transparent text-senior-base font-medium focus:outline-none cursor-pointer relative z-50"
               style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}
             >
@@ -71,7 +76,7 @@ const Header = () => {
             <Globe className="h-4 w-4 text-primary" />
             <select 
               value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
+              onChange={(e) => onLanguageChange(e.target.value)}
               className="bg-transparent text-senior-base font-medium focus:outline-none cursor-pointer relative z-50"
               style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}
             >

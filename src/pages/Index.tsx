@@ -64,6 +64,13 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Emergency Contact - Moved to second position */}
+      <section className="px-4 py-8">
+        <div className="max-w-2xl mx-auto">
+          <EmergencyContact />
+        </div>
+      </section>
+
       {/* Main Services */}
       <section className="px-4 py-8">
         <div className="max-w-7xl mx-auto">
@@ -109,13 +116,6 @@ const Index = () => {
               </Button>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Emergency Contact */}
-      <section className="px-4 py-8">
-        <div className="max-w-2xl mx-auto">
-          <EmergencyContact />
         </div>
       </section>
 

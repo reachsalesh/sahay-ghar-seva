@@ -1,17 +1,11 @@
-import { useState } from "react";
 import { Car, UtensilsCrossed, Home, MapPin, Clock, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import ServiceCard from "@/components/ServiceCard";
 import EmergencyContact from "@/components/EmergencyContact";
-import LocationMap from "@/components/LocationMap";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Index = () => {
-  const [selectedCity, setSelectedCity] = useState("दिल्ली");
-  const [selectedLanguage, setSelectedLanguage] = useState("हिंदी");
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number; address: string } | null>(null);
-  
   const mainServices = [
     {
       icon: Car,
@@ -44,12 +38,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header 
-        selectedCity={selectedCity}
-        onCityChange={setSelectedCity}
-        selectedLanguage={selectedLanguage}
-        onLanguageChange={setSelectedLanguage}
-      />
+      <Header />
       
       {/* Hero Section */}
       <section className="relative px-4 py-8">
@@ -72,23 +61,6 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Location Map */}
-      <section className="px-4 py-6">
-        <div className="max-w-4xl mx-auto">
-          <LocationMap 
-            selectedCity={selectedCity}
-            onLocationUpdate={setUserLocation}
-          />
-          {userLocation && (
-            <div className="mt-4 p-4 bg-accent rounded-lg">
-              <p className="text-senior-base font-medium text-foreground">
-                📍 Detected Location: <span className="text-primary">{userLocation.address}</span>
-              </p>
-            </div>
-          )}
         </div>
       </section>
 

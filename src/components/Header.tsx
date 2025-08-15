@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Globe, Menu } from "lucide-react";
+import { Globe, Menu, MapPin } from "lucide-react";
 
 const Header = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("हिंदी");
+  const [selectedCity, setSelectedCity] = useState("दिल्ली");
   
   const languages = [
     { code: "hi", name: "हिंदी", english: "Hindi" },
@@ -14,6 +15,19 @@ const Header = () => {
     { code: "mr", name: "मराठी", english: "Marathi" },
     { code: "gu", name: "ગુજરાતી", english: "Gujarati" },
     { code: "kn", name: "ಕನ್ನಡ", english: "Kannada" },
+  ];
+
+  const cities = [
+    { code: "del", name: "दिल्ली", english: "Delhi" },
+    { code: "mum", name: "मुंबई", english: "Mumbai" },
+    { code: "blr", name: "बेंगलुरु", english: "Bangalore" },
+    { code: "che", name: "चेन्नई", english: "Chennai" },
+    { code: "hyd", name: "हैदराबाद", english: "Hyderabad" },
+    { code: "kol", name: "कोलकाता", english: "Kolkata" },
+    { code: "pun", name: "पुणे", english: "Pune" },
+    { code: "ahm", name: "अहमदाबाद", english: "Ahmedabad" },
+    { code: "jai", name: "जयपुर", english: "Jaipur" },
+    { code: "lko", name: "लखनऊ", english: "Lucknow" },
   ];
 
   return (
@@ -30,15 +44,44 @@ const Header = () => {
         </div>
         
         <div className="flex items-center gap-3">
+          {/* City Selector */}
+          <div className="flex items-center gap-2 bg-accent px-3 py-2 rounded-lg">
+            <MapPin className="h-4 w-4 text-secondary" />
+            <select 
+              value={selectedCity}
+              onChange={(e) => setSelectedCity(e.target.value)}
+              className="bg-transparent text-senior-base font-medium focus:outline-none cursor-pointer relative z-50"
+              style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}
+            >
+              {cities.map((city) => (
+                <option 
+                  key={city.code} 
+                  value={city.name}
+                  className="bg-card text-card-foreground py-2 px-4"
+                  style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--card-foreground))' }}
+                >
+                  {city.name} • {city.english}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Language Selector */}
           <div className="flex items-center gap-2 bg-accent px-3 py-2 rounded-lg">
             <Globe className="h-4 w-4 text-primary" />
             <select 
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="bg-transparent text-senior-base font-medium focus:outline-none"
+              className="bg-transparent text-senior-base font-medium focus:outline-none cursor-pointer relative z-50"
+              style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}
             >
               {languages.map((lang) => (
-                <option key={lang.code} value={lang.name}>
+                <option 
+                  key={lang.code} 
+                  value={lang.name}
+                  className="bg-card text-card-foreground py-2 px-4"
+                  style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--card-foreground))' }}
+                >
                   {lang.name}
                 </option>
               ))}

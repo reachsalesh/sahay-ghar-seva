@@ -32,6 +32,10 @@ export default {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
+				success: {
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))'
+				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
@@ -64,9 +68,24 @@ export default {
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
+				lg: 'var(--radius-lg)',
+				md: 'var(--radius)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			boxShadow: {
+				'warm': 'var(--shadow-warm)',
+				'card': 'var(--shadow-card)',
+				'float': 'var(--shadow-float)'
+			},
+			fontSize: {
+				'senior-xl': 'var(--text-senior-xl)',
+				'senior-lg': 'var(--text-senior-lg)',
+				'senior-base': 'var(--text-senior-base)'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-warm': 'var(--gradient-warm)',
+				'gradient-trust': 'var(--gradient-trust)'
 			},
 			keyframes: {
 				'accordion-down': {

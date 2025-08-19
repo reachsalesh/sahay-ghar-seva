@@ -4,7 +4,7 @@ import { LucideIcon } from "lucide-react";
 interface ServiceCardProps {
   icon: LucideIcon;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   description: string;
   onClick: () => void;
   gradient?: string;
@@ -32,7 +32,7 @@ const ServiceCard = ({
         </div>
         <div>
           <h3 className="text-senior-lg font-bold text-foreground">{title}</h3>
-          <p className="text-senior-base font-medium text-primary">{subtitle}</p>
+          {subtitle && <p className="text-senior-base font-medium text-primary">{subtitle}</p>}
           <p className="text-sm text-muted-foreground mt-2">{description}</p>
         </div>
       </div>

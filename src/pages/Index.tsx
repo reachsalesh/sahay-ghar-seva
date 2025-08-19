@@ -3,37 +3,37 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import ServiceCard from "@/components/ServiceCard";
 import EmergencyContact from "@/components/EmergencyContact";
+import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Index = () => {
+  const { t } = useLanguage();
+
   const mainServices = [
     {
       icon: Car,
-      title: "यात्रा सेवा",
-      subtitle: "Travel Service", 
-      description: "Safe rides for your daily needs",
+      title: t('travelService'),
+      description: t('travelDesc'),
       gradient: "bg-gradient-primary"
     },
     {
       icon: UtensilsCrossed,
-      title: "खाना ऑर्डर",
-      subtitle: "Food Delivery",
-      description: "Fresh meals delivered to your door",
+      title: t('foodDelivery'),
+      description: t('foodDesc'),
       gradient: "bg-gradient-trust"
     },
     {
       icon: Home,
-      title: "घर की सेवा",
-      subtitle: "Home Services",
-      description: "Furniture, repairs & maintenance",
+      title: t('homeServices'),
+      description: t('homeDesc'),
       gradient: "bg-gradient-warm"
     }
   ];
 
   const quickServices = [
-    { icon: MapPin, label: "नजदीकी दुकानें", sublabel: "Nearby Stores" },
-    { icon: Clock, label: "तुरंत सेवा", sublabel: "Instant Service" },
-    { icon: Star, label: "पसंदीदा", sublabel: "Favorites" },
+    { icon: MapPin, label: t('nearbyStores') },
+    { icon: Clock, label: t('instantService') },
+    { icon: Star, label: t('favorites') },
   ];
 
   return (
@@ -53,10 +53,9 @@ const Index = () => {
               <div className="flex items-center justify-center h-full text-center text-white p-6">
                 <div>
                   <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                    आपकी सेवा में हाजिर
+                    {t('heroTitle')}
                   </h1>
-                  <p className="text-xl md:text-2xl mb-2">At Your Service</p>
-                  <p className="text-lg opacity-90">All services at your doorstep</p>
+                  <p className="text-xl md:text-2xl mb-2">{t('heroSubtitle')}</p>
                 </div>
               </div>
             </div>
@@ -75,7 +74,7 @@ const Index = () => {
       <section className="px-4 py-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-senior-xl font-bold text-center mb-8 text-foreground">
-            मुख्य सेवाएं • Main Services
+            {t('mainServicesTitle')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {mainServices.map((service, index) => (
@@ -83,7 +82,6 @@ const Index = () => {
                 key={index}
                 icon={service.icon}
                 title={service.title}
-                subtitle={service.subtitle}
                 description={service.description}
                 gradient={service.gradient}
                 onClick={() => {
@@ -99,7 +97,7 @@ const Index = () => {
       <section className="px-4 py-6">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-senior-lg font-bold text-center mb-6 text-foreground">
-            त्वरित पहुंच • Quick Access
+            {t('quickAccessTitle')}
           </h3>
           <div className="grid grid-cols-3 gap-4">
             {quickServices.map((service, index) => (
@@ -112,7 +110,6 @@ const Index = () => {
               >
                 <service.icon className="h-6 w-6 mb-2" />
                 <span className="text-sm font-medium">{service.label}</span>
-                <span className="text-xs text-muted-foreground">{service.sublabel}</span>
               </Button>
             ))}
           </div>
@@ -123,10 +120,10 @@ const Index = () => {
       <footer className="bg-card border-t border-border py-6 px-4 mt-8">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-senior-base font-medium text-foreground mb-2">
-            सेवा • Seva
+            {t('appName')}
           </p>
           <p className="text-sm text-muted-foreground">
-            Making digital services accessible for everyone
+            {t('footerTagline')}
           </p>
         </div>
       </footer>
